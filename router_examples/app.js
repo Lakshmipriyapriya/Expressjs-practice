@@ -1,21 +1,21 @@
 var express= require('express');
 var app=express();
 var router = require('./index');
-var http = require('http')
-var send = require('send')
+// var http = require('http')
+// var send = require('send')
 console.log('home page');
 app.use('/bava',router);
 
  app.get('/',function(req,res){
  	res.send('basic application for routers');
 
-app.use('/get',router);
+app.use('/new',router);
 app.get('/welcome',function(req,res){
-	res.send('hai');
+	res.send('data created');
 });
-app.use('/post',router);
+app.use('/details',router);
 app.get('/hello',function(req,res){
-	res.send('new page');
+	res.send('new details');
 })
 app.all('/data',function(req,res){
 	res.send('welcome to data section');
@@ -48,7 +48,7 @@ app.get('/ab(cd)?e',function(req,res){
 app.get('/a',function(req,res){
 	res.send('the given input is matched with the condition');
 })
-app.get(/.*er$/,function(req,res){
+app.get('/.*er$/',function(req,res){
 	res.send('pattern matched');
 })
 app.get('/bus/:from-:to',function(req,res){
@@ -74,5 +74,5 @@ var login = function (req, res) {
 
  app.get('/login/page', [name, password, login])
 
-
+});
 app.listen(3000);
